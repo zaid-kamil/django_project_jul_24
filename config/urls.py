@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from main.views import index, login_view, register_view, logout_view
+from main.views import (index, login_view, 
+                        register_view, logout_view,
+                        add_task, complete_task)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +29,8 @@ urlpatterns = [
     path("login", login_view, name="login"),
     path("register", register_view, name="register"),
     path('logout', logout_view, name='logout'),
+    path('add/', add_task, name='add_task'),
+    path('complete/<int:id>/', complete_task, name='complete'),
 ]
 
 if settings.DEBUG:
