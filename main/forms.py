@@ -9,4 +9,4 @@ class TaskForm(forms.ModelForm):
 class MovieForm(forms.ModelForm):
     class Meta:
         model = Movie
-        field = '__all__'
+        fields = '__all__'
