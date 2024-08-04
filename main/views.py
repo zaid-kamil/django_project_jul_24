@@ -87,5 +87,10 @@ def movie_delete_view(request, id):
     return redirect('view_movies')
 
 def movie_search_view(request):
-    # todo add logic in next class
+    if request.method == 'POST':
+        query = request.POST.get('query')
+        movies = Movie.objects.filter(title__icontains=query)
+        return render(request, 'movies/search.html', {
+            'movies': movies,
+        })
     return render(request, 'movies/search.html')
